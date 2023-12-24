@@ -1,10 +1,9 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './shared/guards/auth.guard';
 
 export const routes: Routes = [
-  { path: '', loadComponent: () => import('./home/home.component') },
+  { path: '', loadComponent: () => import('./home/home.component'), canActivate: [authGuard] },
   { path: 'auth/login', loadComponent: () => import('./auth/login/login.component') },
   { path: 'auth/register', loadComponent: () => import('./auth/register/register.component') },
-  { path: 'player', loadComponent: () => import('./player/player.component') },
-  { path: 'movie', loadComponent: () => import('./movie/movie.component') },
-  { path: 'tv', loadComponent: () => import('./tv-show/tv-show.component') },
+  { path: 'account', loadComponent: () => import('./account/account.component'), canActivate: [authGuard] }
 ];

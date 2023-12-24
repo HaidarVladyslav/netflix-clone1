@@ -12,6 +12,9 @@ import { getStorage } from 'firebase/storage';
 
 import { routes } from './app.routes';
 import { environment } from '../environments/environment';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { requestsInterceptor } from './shared/interceptors/requests.interceptor';
+import { provideAuthFeature } from './shared/store/auth.store';
 
 const app = initializeApp(environment.firebaseConfig);
 
@@ -35,6 +38,8 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideStore(),
     provideEffects(),
+    provideAuthFeature(),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
+    provideHttpClient(withInterceptors([requestsInterceptor]))
   ]
 };

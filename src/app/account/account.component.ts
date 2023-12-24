@@ -1,17 +1,17 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-movie',
+  selector: 'app-account',
   standalone: true,
   imports: [],
   template: `
     <p>
-      movie works!
+      account works!
     </p>
   `,
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export default class MovieComponent {
+export default class AccountComponent {
 
 }
